@@ -7,8 +7,8 @@ import (
 )
 
 type Gmail struct {
-	From string
-	To string
+	From    string
+	To      string
 	Subject string
 	Message string
 
@@ -26,10 +26,9 @@ func (self *Gmail) Send() error {
 	auth := smtp.PlainAuth("", self.From, self.Password, server)
 	return smtp.SendMail(
 		fmt.Sprintf("%s:587", server),
-		auth, 
+		auth,
 		self.From,
-		[]string{self.To}, 
+		[]string{self.To},
 		body.Bytes(),
 	)
 }
-	
